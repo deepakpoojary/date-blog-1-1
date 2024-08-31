@@ -1,15 +1,14 @@
-import cron from "cron";
-import https from "https";
-
+const cron = require("cron");
+const https = require("https");
 const URL = "https://date-blog-1-1.onrender.com";
 
-const job = new cron.CronJob("*/14 * * * *", function () {
+const job = new cron.CronJob("*/5 * * * * *", function () {
   https
     .get(URL, (res) => {
       if (res.statusCode === 200) {
         console.log("GET request sent successfully");
       } else {
-        console.log("GET request failed", res.statusCode);
+        console.log("GET request failed1", res.statusCode);
       }
     })
     .on("error", (e) => {
@@ -17,7 +16,8 @@ const job = new cron.CronJob("*/14 * * * *", function () {
     });
 });
 
-export default job;
+module.exports = job;
+
 
 // CRON JOB EXPLANATION:
 // Cron jobs are scheduled tasks that run periodically at fixed intervals or specific times

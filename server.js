@@ -7,7 +7,7 @@ const cors = require("cors");
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 5000;
-import job from "./cron";
+const job = require("./cron");
 
 // Middleware
 app.use(cors());
