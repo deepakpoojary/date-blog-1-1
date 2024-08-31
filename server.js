@@ -71,7 +71,9 @@ app.get("/journal/:date", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Hello World" });
+});
 // Create a new note
 app.post("/journal", async (req, res) => {
   const { date, note } = req.body;
