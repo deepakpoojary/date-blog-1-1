@@ -7,6 +7,7 @@ const cors = require("cors");
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 5000;
+import job from "./cron";
 
 // Middleware
 app.use(cors());
@@ -27,7 +28,7 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Connected to MongoDB");
 });
-
+job.start();
 // Journal Entry Schema
 const journalEntrySchema = new mongoose.Schema({
   date: {
