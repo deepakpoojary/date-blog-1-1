@@ -2,11 +2,11 @@ const cron = require("cron");
 const https = require("https");
 const URL = "https://date-blog-1-1.onrender.com";
 
-const job = new cron.CronJob("*/5 * * * * *", function () {
+const job = new cron.CronJob("*/14 * * * *", function () {
   https
     .get(URL, (res) => {
       if (res.statusCode === 200) {
-        console.log("GET request sent successfully");
+        console.log("GET request sent successfully111");
       } else {
         console.log("GET request failed1", res.statusCode);
       }
@@ -17,7 +17,6 @@ const job = new cron.CronJob("*/5 * * * * *", function () {
 });
 
 module.exports = job;
-
 
 // CRON JOB EXPLANATION:
 // Cron jobs are scheduled tasks that run periodically at fixed intervals or specific times
